@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/itemListFragment">
+
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.ItemListFragment"
+        android:label="items_list_item"
+        tools:layout="@layout/fragment_list_item">
+        <action
+            android:id="@+id/action_itemListFragment_to_newItemFragment"
+            app:destination="@id/newItemFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_itemEditFragment"
+            app:destination="@id/itemEditFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_sortListFragment"
+            app:destination="@id/sortListFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newItemFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.NewItemFragment"
+        android:label="fragment_new_item"
+        tools:layout="@layout/fragment_new_item" />
+    <fragment
+        android:id="@+id/itemEditFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.ItemEditFragment"
+        android:label="fragment_item_edit"
+        tools:layout="@layout/fragment_item_edit">
+        <argument
+            android:name="invoice"
+            app:argType="com.hgtech.expensehistory.database.relation.ItemCategory" />
+    </fragment>
+    <dialog
+        android:id="@+id/sortListFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.SortListFragment"
+        android:label="fragment_sort_list"
+        tools:layout="@layout/fragment_sort_list">
+        <argument
+            android:name="previousUser"
+            app:argType="integer[]" />
+        <argument
+            android:name="previousCategories"
+            app:argType="integer[]" />
+        <argument
+            android:name="from"
+            app:argType="long" />
+
+        <argument
+            android:name="to"
+            app:argType="long" />
+    </dialog>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_backupRestoreFragment"
+            app:destination="@id/backupRestoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.user.UserListFragment"
+        android:label="UserListFragment"
+        tools:layout="@layout/fragment_user_category_list">
+        <action
+            android:id="@+id/action_userListFragment_to_newUserFragment"
+            app:destination="@id/newUserFragment" />
+        <action
+            android:id="@+id/action_userListFragment_to_updateUserFragment"
+            app:destination="@id/updateUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.category.CategoryListFragment"
+        tools:layout="@layout/fragment_user_category_list"
+        android:label="CategoryListFragment">
+        <action
+            android:id="@+id/action_categoryListFragment_to_newCategoryFragment"
+            app:destination="@id/newCategoryFragment" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_updateCategoryFragment"
+            app:destination="@id/updateCategoryFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/newCategoryFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.category.NewCategoryFragment"
+        android:label="fragment_new_category"
+        tools:layout="@layout/fragment_new_category" />
+    <fragment
+        android:id="@+id/updateCategoryFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.category.UpdateCategoryFragment"
+        android:label="fragment_update_category"
+        tools:layout="@layout/fragment_update_root">
+        <argument
+            android:name="category"
+            app:argType="com.hgtech.expensehistory.database.model.CategoryTable" />
+        <action
+            android:id="@+id/action_updateCategoryFragment_self"
+            app:destination="@id/updateCategoryFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/newUserFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.user.NewUserFragment"
+        android:label="fragment_new_user"
+        tools:layout="@layout/fragment_new_user" />
+    <fragment
+        android:id="@+id/updateUserFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.user.UpdateUserFragment"
+        android:label="fragment_update_user"
+        tools:layout="@layout/fragment_update_root">
+        <argument
+            android:name="user"
+            app:argType="com.hgtech.expensehistory.database.model.UserTable" />
+        <action
+            android:id="@+id/action_updateUserFragment_self"
+            app:destination="@id/updateUserFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/backupRestoreFragment"
+        android:name="com.hgtech.expensehistory.ui.fragment.settings.BackupRestoreFragment"
+        android:label="fragment_backup_restore"
+        tools:layout="@layout/fragment_backup_restore">
+        <action
+            android:id="@+id/action_backupRestoreFragment_to_sortListFragment"
+            app:destination="@id/sortListFragment" />
+    </dialog>
+</navigation>

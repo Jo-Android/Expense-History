@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textColor">#F2EEEE</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="menu">#F6F0F0</color>
+    <color name="hint">#C0B7B7</color>
+    <color name="dialog">#5D5858</color>
+    <color name="textColor2">#000</color>
+    <color name="default_background">#121111</color>
+    <color name="delete_button_box">#585353</color>
+</resources>
